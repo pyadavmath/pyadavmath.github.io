@@ -1,408 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Priyanshu | Academic & Research Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <style>
-    :root {
-      --primary-color: #1a365d;
-      --secondary-color: #2b6cb0;
-      --accent-color: #3182ce;
-      --bg-color: #f7fafc;
-      --card-bg: #ffffff;
-      --text-color: #2d3748;
-      --text-muted: #718096;
-      --border-color: #e2e8f0;
-      --sidebar-width: 300px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyanshu Yadav - Personal Webpage</title>
+    <style>
+        :root {
+            --primary-color: #0366d6;
+            --text-color: #24292e;
+            --bg-color: #f6f8fa;
+            --card-bg: #ffffff;
+            --border-color: #e1e4e8;
+            --secondary-text: #586069;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-      display: flex;
-      min-height: 100vh;
-    }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
 
-    /* Sidebar Navigation */
-    .sidebar {
-      width: var(--sidebar-width);
-      background-color: var(--primary-color);
-      color: #ffffff;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      padding: 2rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-      z-index: 100;
-    }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
 
-    .profile-card {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 25px;
+        }
 
-    .profile-img {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      border: 3px solid var(--accent-color);
-      object-fit: cover;
-      margin-bottom: 1rem;
-      background-color: #cbd5e0;
-    }
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+            background-color: #eaecef;
+        }
 
-    .profile-card h1 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
+        .header-info h1 {
+            margin: 0 0 5px 0;
+            font-size: 2.2rem;
+            color: #1b1f23;
+        }
 
-    .profile-card p {
-      font-size: 0.9rem;
-      color: #cbd5e0;
-    }
+        .header-info p {
+            margin: 4px 0;
+            color: var(--secondary-text);
+            font-size: 1.05rem;
+        }
 
-    .nav-menu {
-      list-style: none;
-      width: 100%;
-    }
+        .contact-links {
+            margin-top: 12px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
-    .nav-item {
-      margin-bottom: 0.5rem;
-    }
+        .contact-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
 
-    .nav-link {
-      display: flex;
-      align-items: center;
-      padding: 0.75rem 1rem;
-      color: #e2e8f0;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
+        .contact-links a:hover {
+            text-decoration: underline;
+        }
 
-    .nav-link i {
-      width: 24px;
-      margin-right: 0.75rem;
-    }
+        h2 {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-top: 0;
+            color: #1b1f23;
+            font-size: 1.4rem;
+        }
 
-    .nav-link:hover, .nav-link.active {
-      background-color: var(--secondary-color);
-      color: #ffffff;
-    }
+        ul {
+            padding-left: 20px;
+        }
 
-    /* Main Content Area */
-    .main-content {
-      margin-left: var(--sidebar-width);
-      flex: 1;
-      padding: 3rem;
-      max-width: 1100px;
-    }
+        li {
+            margin-bottom: 8px;
+        }
 
-    .page-section {
-      display: none;
-      animation: fadeIn 0.3s ease-in-out;
-    }
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
 
-    .page-section.active {
-      display: block;
-    }
+        .item-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .item-date {
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
 
-    .section-title {
-      font-size: 1.8rem;
-      color: var(--primary-color);
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--border-color);
-    }
+        .item-sub {
+            color: var(--secondary-text);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
 
-    /* Cards & Grids */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
+        .badge {
+            background-color: #f1f8ff;
+            color: var(--primary-color);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid #c8e1ff;
+            display: inline-block;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
 
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
 
-    .card h3 {
-      color: var(--primary-color);
-      font-size: 1.15rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .card .meta {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-    }
-
-    /* Badges */
-    .badge-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.75rem;
-    }
-
-    .badge {
-      background-color: #ebf8ff;
-      color: var(--secondary-color);
-      padding: 0.35rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.825rem;
-      font-weight: 500;
-    }
-
-    /* Contact Links */
-    .contact-info {
-      list-style: none;
-    }
-
-    .contact-info li {
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .contact-info i {
-      font-size: 1.2rem;
-      color: var(--secondary-color);
-      margin-right: 1rem;
-      width: 20px;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      background-color: var(--secondary-color);
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: background 0.2s;
-    }
-
-    .btn:hover {
-      background-color: var(--primary-color);
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
-      .sidebar {
-        width: 100%;
-        position: relative;
-        padding: 1.5rem 1rem;
-      }
-      .main-content {
-        margin-left: 0;
-        padding: 1.5rem;
-      }
-    }
-  </style>
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Sidebar Navigation -->
-  <aside class="sidebar">
-    <div class="profile-card">
-      <img src="https://via.placeholder.com/130" alt="Priyanshu" class="profile-img"/>
-      <h1>Priyanshu</h1>
-      <p>Mathematics Researcher & Educator</p>
+<div class="container">
+
+    <!-- Header Section -->
+    <div class="card header">
+        <!-- Save your profile picture in the same folder as profile.jpg -->
+        <img src="profile.jpg" alt="Priyanshu Yadav" class="profile-img">
+        <div class="header-info">
+            <h1>Priyanshu Yadav</h1>
+            <p>👤 PhD Research Scholar & Teaching Assistant</p>
+            <p>🏫 Department of Mathematics, BITS Pilani</p>
+            <p>📍 Alwar, Rajasthan, India (301709)</p>
+            <p>📧 <a href="mailto:pyadavmath@gmail.com" style="color: inherit;">pyadavmath@gmail.com</a> | 📞 +91 635 0029 208</p>
+            
+            <div class="contact-links">
+                <a href="https://scholar.google.com" target="_blank">Google Scholar</a> |
+                <a href="https://www.researchgate.net" target="_blank">ResearchGate</a> |
+                <a href="https://github.com/your-username" target="_blank">GitHub</a>
+            </div>
+        </div>
     </div>
 
-    <ul class="nav-menu">
-      <li class="nav-item"><a class="nav-link active" onclick="showTab('home')"><i class="fa-solid fa-house"></i> Home</a></li>
-      <li class="nav-item"><a class="nav-link" onclick="showTab('education')"><i class="fa-solid fa-graduation-cap"></i> Education</a></li>
-      <li class="nav-item"><a class="nav-link" onclick="showTab('experience')"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
-      <li class="nav-item"><a class="nav-link" onclick="showTab('research')"><i class="fa-solid fa-square-root-variable"></i> Research</a></li>
-      <li class="nav-item"><a class="nav-link" onclick="showTab('publications')"><i class="fa-solid fa-book-open"></i> Publications</a></li>
-      <li class="nav-item"><a class="nav-link" onclick="showTab('cv')"><i class="fa-solid fa-file-pdf"></i> Curriculum Vitae</a></li>
-      <li class="nav-item"><a class="nav-link" onclick="showTab('contact')"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-    </ul>
-  </aside>
+    <!-- About / Summary Section -->
+    <div class="card">
+        <h2>About Me</h2>
+        <p>
+            I am a PhD Research Scholar under the supervison of <a href="https://sites.google.com/view/sudarshans/home">Dr. Sudarshan Santra</a> in Department of Mathematics at BITS Pilani. My current research focuses on developing numerical solutions for fractional PDEs. I hold a strong foundational background in Lie symmetry analysis, Lie groups, and manifolds, particularly applied to nonlinear PDEs. I am passionate about bridging theoretical mathematics with practical, computational solutions, leveraging tools such as MATLAB, Mathematica, Maple, and Python to model and visualize complex systems.
+        </p>
+    </div>
 
-  <!-- Main Content -->
-  <main class="main-content">
-
-    <!-- HOME PAGE -->
-    <section id="home" class="page-section active">
-      <h2 class="section-title">Biography & Overview</h2>
-      <div class="card" style="margin-bottom: 2rem;">
-        <p>I am a dedicated mathematics researcher and educator specializing in <strong>Nonlinear Partial Differential Equations (PDEs)</strong>, <strong>Lie Symmetry Analysis</strong>, and <strong>Numerical Methods</strong> for fractional-order differential equations.</p>
-        <br/>
-        <p>My research focuses on formulating exact analytical solutions and high-order numerical discretization schemes (including L1, Grünwald-Letnikov, and trapezoidal approximations). Alongside research, I actively mentor students in advanced mathematics, preparing them for competitive curricula such as Digital SAT, IB Mathematics, and Grade 11/12 advanced algebra and calculus.</p>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>Research Interests</h3>
-          <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
-            <li>Nonlinear Partial Differential Equations (PDEs)</li>
-            <li>Lie Symmetry Methods & Invariant Solutions</li>
-            <li>Numerical Analysis & Fractional Calculus</li>
-            <li>Computational Implementations (MATLAB, Maple, Mathematica, Python)</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Computational Expertise</h3>
-          <div class="badge-container">
-            <span class="badge">MATLAB</span>
-            <span class="badge">Maple</span>
-            <span class="badge">Mathematica</span>
-            <span class="badge">Python</span>
-            <span class="badge">R</span>
-            <span class="badge">LaTeX</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION PAGE -->
-    <section id="education" class="page-section">
-      <h2 class="section-title">Education</h2>
-      <div class="card" style="margin-bottom: 1.5rem;">
-        <h3>Master of Science (M.Sc.) in Mathematics</h3>
-        <p class="meta">Completed</p>
-        <p>Specialization in Advanced Differential Equations, Numerical Analysis, and Lie Group Analysis.</p>
-      </div>
-      <div class="card">
-        <h3>Bachelor of Science (B.Sc.) in Mathematics</h3>
-        <p class="meta">Completed</p>
-        <p>Comprehensive coursework in Real Analysis, Abstract Algebra, Linear Algebra, and Differential Equations.</p>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE PAGE -->
-    <section id="experience" class="page-section">
-      <h2 class="section-title">Academic & Teaching Experience</h2>
-      <div class="card" style="margin-bottom: 1.5rem;">
-        <h3>Mathematics Educator & Tutor</h3>
-        <p class="meta">Private & Online Tutoring</p>
-        <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
-          <li>Designed specialized curricula and lesson plans for Digital SAT Math and IB Mathematics (AA/AI).</li>
-          <li>Guided Grade 11 & 12 students in mastering calculus, trigonometry, and complex algebraic problem-solving.</li>
-          <li>Developed customized computational workflows in MATLAB to assist students with numerical visualisations.</li>
+    <!-- Education Section -->
+    <div class="card">
+        <h2>Education</h2>
+        <ul>
+            <li style="margin-bottom: 15px;">
+                <div class="item-header">
+                    <span class="item-title">Doctor of Philosophy (Ph.D.) in Mathematics</span>
+                    <span class="item-date">Jan 2026 – Present</span>
+                </div>
+                <div class="item-sub">Birla Institute of Technology and Science, Pilani</div>
+                <div><em>Research Topics:</em> Numerical Solution of Fractional ODE/PDE, Integro Fractional Differential Equations, Modeling in Fractional Differential Equations.</div>
+            </li>
+            <li style="margin-bottom: 15px;">
+                <div class="item-header">
+                    <span class="item-title">Master of Science (M.Sc.) in Mathematics</span>
+                    <span class="item-date">Aug 2023 – May 2025</span>
+                </div>
+                <div class="item-sub">Netaji Subhas University of Technology (NSUT), Dwarka — CGPA: 6.5 / 10</div>
+                <div><em>Major:</em> Mathematics | <em>Minor:</em> Physics</div>
+                <div><em>Thesis:</em> "Lie Symmetry analysis, Exact, Optimal solution of nmCBS equation"</div>
+            </li>
+            <li>
+                <div class="item-header">
+                    <span class="item-title">Bachelor of Science (B.Sc. Hons) in Mathematics</span>
+                    <span class="item-date">Aug 2020 – May 2023</span>
+                </div>
+                <div class="item-sub">Ram Lal Anand College, University of Delhi — CGPA: 8.5 / 10</div>
+                <div><em>Major:</em> Mathematics | <em>Minor:</em> Computer Science</div>
+            </li>
         </ul>
-      </div>
-    </section>
+    </div>
 
-    <!-- RESEARCH PAGE -->
-    <section id="research" class="page-section">
-      <h2 class="section-title">Research Overview</h2>
-      <div class="card">
-        <h3>Nonlinear PDEs & Numerical Schemes</h3>
-        <p>My work centers on developing unified analytical and computational frameworks for solving challenging nonlinear differential equations. Key focal areas include:</p>
-        <br/>
-        <ul style="padding-left: 1.2rem;">
-          <li><strong>Lie Symmetry Analysis:</strong> Reducing multi-dimensional nonlinear PDEs into ordinary differential equations to extract exact invariant solutions.</li>
-          <li><strong>Fractional Discretization Schemes:</strong> Designing and implementing high-order L1 and Grünwald-Letnikov schemes for time-fractional differential systems.</li>
-          <li><strong>Error & Convergence Analysis:</strong> Rigorously proving stability and error bounds for numerical approximations.</li>
+    <!-- Research & Experience Section -->
+    <div class="card">
+        <h2>Experience & Research</h2>
+        <ul>
+            <li style="margin-bottom: 15px;">
+                <div class="item-header">
+                    <span class="item-title">PhD Research Scholar & Teaching Assistant</span>
+                    <span class="item-date">Jan 2026 – Present</span>
+                </div>
+                <div class="item-sub">BITS Pilani</div>
+                <ul>
+                    <li>Lead class discussion sessions for graduate mathematics students.</li>
+                    <li>Supervise mathematical laboratory classes, assisting students with computational problem-solving and software tools.</li>
+                </ul>
+            </li>
+            <li style="margin-bottom: 15px;">
+                <div class="item-header">
+                    <span class="item-title">Research Experience</span>
+                    <span class="item-date">Aug 2024 – Jan 2026</span>
+                </div>
+                <ul>
+                    <li>Working on research on Lie symmetries analysis under faculty guidance.</li>
+                    <li>Completed master's thesis on Lie Symmetries analysis of non-linear PDEs.</li>
+                </ul>
+            </li>
+            <li>
+                <div class="item-header">
+                    <span class="item-title">Home Tutor & Account Manager</span>
+                    <span class="item-date">Nov 2022 – Mar 2025</span>
+                </div>
+                <ul>
+                    <li>Delivered personalized in-home & online tutoring to students (Grades VIII–XII) in Mathematics.</li>
+                    <li>Managed e-commerce seller accounts (Amazon & Flipkart) for Leaf Infratech & Amyra Traders, optimizing product listings, pricing, and advertising campaigns (Nov 2022 – Jan 2024).</li>
+                </ul>
+            </li>
         </ul>
-      </div>
-    </section>
+    </div>
 
-    <!-- PUBLICATIONS PAGE -->
-    <section id="publications" class="page-section">
-      <h2 class="section-title">Publications & Manuscripts</h2>
-      <div class="card" style="margin-bottom: 1.5rem;">
-        <h3>Analytical and Numerical Studies on Nonlinear PDEs via Lie Symmetry Analysis</h3>
-        <p class="meta">Submitted for Review | Paper ID: JAMC-D-26-00547</p>
-        <p><em>Journal of Applied Mathematics and Computing (JAMC)</em></p>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">Focuses on explicit exact solutions and stable discretization schemes for nonlinear PDE models.</p>
-      </div>
-    </section>
+    <!-- Areas of Interest -->
+    <div class="card">
+        <h2>Areas of Interest</h2>
+        <div>
+            <span class="badge">Numerical Analysis</span>
+            <span class="badge">Ordinary & Partial Differential Equations</span>
+            <span class="badge">Lie Symmetry Analysis</span>
+            <span class="badge">Linear Algebra</span>
+            <span class="badge">Group Theory</span>
+            <span class="badge">Graph Theory</span>
+            <span class="badge">Optimization & Linear Programming</span>
+            <span class="badge">Calculus</span>
+            <span class="badge">Financial Mathematics</span>
+        </div>
+    </div>
 
-    <!-- CV PAGE -->
-    <section id="cv" class="page-section">
+    <!-- Workshops & Webinars Section -->
+    <div class="card">
+        <h2>Workshops & Conferences</h2>
+        <ul>
+            <li><strong>Workshop:</strong> "Partial Differential Equations: Theory and Numerics" (7-day workshop) at IIIT Delhi.</li>
+            <li><strong>Workshop:</strong> "Harmonic Mappings, PDEs, and Applications" (3-day workshop) at IIT Bhilai.</li>
+            <li><strong>National Level Workshop:</strong> "CRYPTOGRAPHY: A Recent Trend In Mathematics" at Ram Lal Anand College, University of Delhi.</li>
+            <li><strong>Webinar:</strong> "Some Concepts From Linear Algebra" by Prof. Aparna Mehra.</li>
+            <li><strong>Webinar:</strong> "Mathemagical Symposium" with Prof. Brian Winkel.</li>
+            <li><strong>Webinar:</strong> "Applications of Number Theory in Real Life".</li>
+            <li><strong>National Webinar:</strong> "Mathematics Behind Investment Decision Making".</li>
+            <li><strong>National Webinar:</strong> "Introduction to Data Science".</li>
+        </ul>
+    </div>
+
+    <!-- Leadership & Extracurriculars Section -->
+    <div class="card">
+        <h2>Leadership & Extracurricular Activities</h2>
+        <ul>
+            <li><strong>Class Representative:</strong> M.Sc. Mathematics, Netaji Subhas University of Technology (2024–2025).</li>
+            <li><strong>Secretary:</strong> Trikon (Society of Department of Mathematics), NSUT Dwarka (2023–2024).</li>
+            <li><strong>President:</strong> Department of Mathematics, Ram Lal Anand College, University of Delhi (2022–2023).</li>
+            <li><strong>Treasurer:</strong> Equal Opportunities Cell, Ram Lal Anand College, University of Delhi (2021–2022).</li>
+            <li><strong>Event Organizer:</strong> Organized IMPLOSION'22 (Annual Math Fest) and events like MEMETRIX, PRESENTUS, ENIGMA at DU.</li>
+            <li><strong>Workshops & Competitions:</strong> Organized National Workshops on Cryptography and Number Theory at DU, and poster presentation competitions at NSUT.</li>
+        </ul>
+    </div>
+
+    <!-- Technical & Short Courses Section -->
+    <div class="card">
+        <h2>Technical Skills & Short Courses</h2>
+        <div class="skills-grid">
+            <div>
+                <strong>Programming & Software tools:</strong><br>
+                <span class="badge">MATLAB</span>
+                <span class="badge">Python</span>
+                <span class="badge">Maple</span>
+                <span class="badge">Mathematica</span>
+                <span class="badge">LaTeX</span>
+                <span class="badge">R</span>
+                <span class="badge">C++</span>
+            </div>
+            <div>
+                <strong>Short Courses Completed:</strong>
+                <ul style="padding-left: 15px; margin-top: 5px;">
+                    <li>LaTeX: The Mathematical Typing Software</li>
+                    <li>Python Programming – A Multidisciplinary Approach</li>
+                    <li>Advanced Excel & Data Analysis</li>
+                    <li>Full Stack Web Development and Hosting</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="card">
+      <section id="cv" class="page-section">
       <h2 class="section-title">Curriculum Vitae</h2>
       <div class="card" style="text-align: center; padding: 3rem;">
         <i class="fa-solid fa-file-pdf" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
-        <h3>Download Full Curriculum Vitae</h3>
-        <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Updated academic CV with complete details on research, coursework, and teaching activities.</p>
+        <h3>Priyanshu Yadav - Curriculum Vitae</h3>
+        <p style="margin-bottom: 1.5rem; color: var(--text-muted);">PhD Research Scholar in Mathematics, BITS Pilani</p>
         <a href="CV.pdf" class="btn" download><i class="fa-solid fa-download"></i> Download CV (PDF)</a>
       </div>
     </section>
+    </div>
 
-    <!-- CONTACT PAGE -->
-    <section id="contact" class="page-section">
-      <h2 class="section-title">Contact</h2>
-      <div class="card">
-        <ul class="contact-info">
-          <li>
-            <i class="fa-solid fa-envelope"></i>
-            <div>
-              <strong>Email:</strong><br/>
-              <a href="mailto:your.email@example.com" style="color: var(--secondary-color);">your.email@example.com</a>
-            </div>
-          </li>
-          <li>
-            <i class="fa-solid fa-location-dot"></i>
-            <div>
-              <strong>Location:</strong><br/>
-              India
-            </div>
-          </li>
-          <li>
-            <i class="fa-brands fa-github"></i>
-            <div>
-              <strong>GitHub:</strong><br/>
-              <a href="https://github.com/yourusername" target="_blank" style="color: var(--secondary-color);">github.com/yourusername</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
+</div>
 
-  </main>
 
-  <script>
-    function showTab(tabId) {
-      // Hide all sections
-      const sections = document.querySelectorAll('.page-section');
-      sections.forEach(section => section.classList.remove('active'));
 
-      // Remove active class from nav links
-      const links = document.querySelectorAll('.nav-link');
-      links.forEach(link => link.classList.remove('active'));
 
-      // Show selected section
-      document.getElementById(tabId).classList.add('active');
 
-      // Highlight active link
-      event.currentTarget.classList.add('active');
-    }
-  </script>
+<footer>
+    &copy; 2026 Priyanshu Yadav.
+</footer>
+
 </body>
 </html>
