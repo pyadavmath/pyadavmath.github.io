@@ -1,248 +1,537 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priyanshu - Personal Webpage</title>
-    <style>
-        :root {
-            --primary-color: #0366d6;
-            --text-color: #24292e;
-            --bg-color: #f6f8fa;
-            --card-bg: #ffffff;
-            --border-color: #e1e4e8;
-            --secondary-text: #586069;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Priyanshu Yadav | Personal Webpage</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #1a365d;
+      --secondary-color: #2b6cb0;
+      --accent-color: #3182ce;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --text-color: #2d3748;
+      --text-muted: #718096;
+      --border-color: #e2e8f0;
+      --sidebar-width: 300px;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+    }
 
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 30px;
-            margin-bottom: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        }
+    /* Mobile Header Bar & Hamburger Icon */
+    .mobile-header {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: var(--primary-color);
+      color: #ffffff;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.25rem;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
 
-        .header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 25px;
-        }
+    .mobile-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
 
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--border-color);
-            background-color: #eaecef;
-        }
+    .hamburger {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      outline: none;
+    }
 
-        .header-info h1 {
-            margin: 0 0 5px 0;
-            font-size: 2.2rem;
-            color: #1b1f23;
-        }
+    /* Sidebar Navigation */
+    .sidebar {
+      width: var(--sidebar-width);
+      background-color: var(--primary-color);
+      color: #ffffff;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      z-index: 999;
+      transition: transform 0.3s ease-in-out;
+    }
 
-        .header-info p {
-            margin: 4px 0;
-            color: var(--secondary-text);
-            font-size: 1.05rem;
-        }
+    .profile-card {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
-        .contact-links {
-            margin-top: 12px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+    .profile-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 3px solid var(--accent-color);
+      object-fit: cover;
+      margin-bottom: 1rem;
+      background-color: #cbd5e0;
+    }
 
-        .contact-links a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
+    .profile-card h1 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
 
-        .contact-links a:hover {
-            text-decoration: underline;
-        }
+    .profile-card p {
+      font-size: 0.85rem;
+      color: #cbd5e0;
+    }
 
-        h2 {
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 8px;
-            margin-top: 0;
-            color: #1b1f23;
-            font-size: 1.4rem;
-        }
+    .nav-menu {
+      list-style: none;
+      width: 100%;
+    }
 
-        ul {
-            padding-left: 20px;
-        }
+    .nav-item {
+      margin-bottom: 0.4rem;
+    }
 
-        li {
-            margin-bottom: 8px;
-        }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 0.65rem 1rem;
+      color: #e2e8f0;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
 
-        .item-title {
-            font-weight: 600;
-        }
+    .nav-link i {
+      width: 24px;
+      margin-right: 0.75rem;
+    }
 
-        .item-sub {
-            color: var(--secondary-text);
-            font-size: 0.95rem;
-        }
+    .nav-link:hover, .nav-link.active {
+      background-color: var(--secondary-color);
+      color: #ffffff;
+    }
 
-        .badge {
-            background-color: #f1f8ff;
-            color: var(--primary-color);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid #c8e1ff;
-            display: inline-block;
-            margin-right: 6px;
-            margin-bottom: 6px;
-        }
+    /* Main Content Area */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      flex: 1;
+      padding: 3rem;
+      max-width: 1100px;
+    }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
+    .page-section {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: var(--secondary-text);
-            font-size: 0.9rem;
-        }
-    </style>
+    .page-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    /* Cards & Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .card h3 {
+      color: var(--primary-color);
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card .meta {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--secondary-color);
+      margin-bottom: 0.75rem;
+    }
+
+    .badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .badge {
+      background-color: #ebf8ff;
+      color: var(--secondary-color);
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.825rem;
+      font-weight: 500;
+    }
+
+    .contact-info {
+      list-style: none;
+    }
+
+    .contact-info li {
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-info i {
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+      margin-right: 1rem;
+      width: 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-color);
+    }
+
+    /* Mobile Responsive Rules */
+    @media (max-width: 850px) {
+      body {
+        flex-direction: column;
+      }
+
+      .mobile-header {
+        display: flex;
+      }
+
+      .sidebar {
+        width: 260px;
+        top: 60px;
+        transform: translateX(-100%);
+        box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 5rem 1.25rem 2rem 1.25rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
+  <!-- Mobile Top Navigation Header -->
+  <header class="mobile-header">
+    <span class="mobile-title">Priyanshu Yadav</span>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
 
-    <!-- Header Section -->
-    <div class="card header">
-        <!-- Placeholder image: Replace 'profile.jpg' with your photo link -->
-        <img src="profile.jpg" alt="Priyanshu" class="profile-img">
-        <div class="header-info">
-            <h1>Priyanshu</h1>
-            <p>👤 Mathematics Researcher & Educator</p>
-            <p>🏫 M.Sc. in Mathematics</p>
-            <p>📧 email@example.com</p>
-            
-            <div class="contact-links">
-                <a href="https://scholar.google.com" target="_blank">Google Scholar</a> |
-                <a href="https://www.researchgate.net" target="_blank">ResearchGate</a> |
-                <a href="https://github.com/your-username" target="_blank">GitHub</a> |
-                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-                <a href="/home.html" target="_blank">Home</a>
-            </div>
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div class="profile-card">
+      <img src="/profile.jpg" alt="Priyanshu Yadav" class="profile-img"/>
+      <h1>Priyanshu Yadav</h1>
+      <p>PhD Research Scholar in Mathematics</p>
+      <p style="font-size: 0.75rem; opacity: 0.8;">BITS Pilani</p>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item"><a class="nav-link active" onclick="showTab('home')"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li class="nav-item"><a class="nav-link" onclick="showTab('education')"><i class="fa-solid fa-graduation-cap"></i> Education</a></li>
+      <li class="nav-item"><a class="nav-link" onclick="showTab('experience')"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
+      <li class="nav-item"><a class="nav-link" onclick="showTab('research')"><i class="fa-solid fa-square-root-variable"></i> Research</a></li>
+      <li class="nav-item"><a class="nav-link" onclick="showTab('leadership')"><i class="fa-solid fa-users"></i> Leadership</a></li>
+      <li class="nav-item"><a class="nav-link" onclick="showTab('cv')"><i class="fa-solid fa-file-pdf"></i> Curriculum Vitae</a></li>
+      <li class="nav-item"><a class="nav-link" onclick="showTab('contact')"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+      <li class="nav-item"><a class="nav-link" href="/home"><i class="fa-solid fa-envelope"></i> Another Webpage Design</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page-section active">
+      <h2 class="section-title">Summary & Overview</h2>
+      <div class="card">
+        <p>I am a <strong>PhD Research Scholar under the supervision of <a href="https://sites.google.com/view/sudarshans/home">Dr. Sudarshan Santra</a> in Department of Mathematics</strong> at <strong>BITS Pilani</strong>. My current research focuses on developing numerical solutions for fractional partial differential equations (PDEs) and integro-fractional differential equations.</p>
+        <br/>
+        <p>I hold a strong foundational background in Lie symmetry analysis, Lie groups, and manifolds applied to nonlinear PDEs. I am passionate about bridging theoretical mathematics with practical, computational solutions, leveraging tools such as MATLAB, Mathematica, Maple, and Python to model and visualize complex systems.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Areas of Interest</h3>
+          <ul style="padding-left: 1.2rem; margin-top: 0.5rem; font-size: 0.95rem;">
+            <li>Numerical Analysis</li>
+            <li>Ordinary & Partial Differential Equations</li>
+            <li>Linear Algebra & Group Theory</li>
+            <li>Calculus & Optimization</li>
+            <li>Graph Theory & Linear Programming</li>
+            <li>Financial Mathematics</li>
+          </ul>
         </div>
-    </div>
-
-    <!-- About Me Section -->
-    <div class="card">
-        <h2>About Me</h2>
-        <p>
-            I am a mathematics researcher and educator with a Master's degree in Mathematics. 
-            My primary research focus lies in Partial Differential Equations (PDEs), specifically nonlinear equations, 
-            Lie symmetry analysis, and numerical schemes for differential equations. 
-            Additionally, I am passionate about mathematics education, specializing in tutoring Grade 11/12, IB Mathematics, and Digital SAT curricula.
-        </p>
-    </div>
-
-    <!-- Research Interests Section -->
-    <div class="card">
-        <h2>Research Interests</h2>
-        <ul>
-            <li><strong>Partial Differential Equations:</strong> Nonlinear PDEs, Exact and Analytical Solutions.</li>
-            <li><strong>Symmetry Methods:</strong> Lie Symmetry Analysis and Group Theoretical Methods.</li>
-            <li><strong>Numerical Analysis:</strong> Fractional Calculus Schemes (L1 Scheme, Generalized Fractional Schemes, Trapezoidal Approximations).</li>
-            <li><strong>Computational Mathematics:</strong> Numerical Simulations and Algorithm Implementation.</li>
-        </ul>
-    </div>
-
-    <!-- Education Section -->
-    <div class="card">
-        <h2>Education</h2>
-        <ul>
-            <li>
-                <div class="item-title">Master of Science (M.Sc.) in Mathematics</div>
-            </li>
-            <li>
-                <div class="item-title">Bachelor of Science (B.Sc.) in Mathematics</div>
-            </li>
-        </ul>
-    </div>
-
-    <!-- Publications Section -->
-    <div class="card">
-        <h2>Publications & Preprints</h2>
-        <ul>
-            <li>
-                <div class="item-title">Symmetry Analysis and Exact Solutions for Nonlinear Partial Differential Equations</div>
-                <div class="item-sub"><em>Submitted / Under Review (Journal of Applied Mathematics and Computing)</em></div>
-            </li>
-        </ul>
-    </div>
-
-    <!-- Teaching Experience Section -->
-    <div class="card">
-        <h2>Teaching & Educational Services</h2>
-        <ul>
-            <li><strong>Digital SAT Mathematics:</strong> Comprehensive prep, strategies, and problem-solving modules.</li>
-            <li><strong>IB Mathematics:</strong> Higher Level (HL) and Standard Level (SL) coursework guidance.</li>
-            <li><strong>Grade 11 & 12 Curriculum:</strong> Advanced Algebra, Calculus, and Applied Mathematics.</li>
-        </ul>
-    </div>
-
-    <!-- Technical Skills Section -->
-    <div class="card">
-        <h2>Technical & Computational Skills</h2>
-        <div class="skills-grid">
-            <div>
-                <strong>Programming & Numerical Tools:</strong><br>
-                <span class="badge">MATLAB</span>
-                <span class="badge">Python</span>
-                <span class="badge">R</span>
-            </div>
-            <div>
-                <strong>Computer Algebra Systems (CAS):</strong><br>
-                <span class="badge">Mathematica</span>
-                <span class="badge">Maple</span>
-            </div>
-            <div>
-                <strong>Tools & Document Preparation:</strong><br>
-                <span class="badge">LaTeX</span>
-                <span class="badge">Git & GitHub</span>
-            </div>
+        <div class="card">
+          <h3>Technical Skills</h3>
+          <div class="badge-container">
+            <span class="badge">MATLAB</span>
+            <span class="badge">MAPLE</span>
+            <span class="badge">Mathematica</span>
+            <span class="badge">Python</span>
+            <span class="badge">LaTeX</span>
+            <span class="badge">C++</span>
+            <span class="badge">R</span>
+            <span class="badge">Excel & Data Analysis</span>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 
-</div>
+    <!-- EDUCATION PAGE -->
+    <section id="education" class="page-section">
+      <h2 class="section-title">Education</h2>
+      
+      <div class="card">
+        <h3>Doctor of Philosophy (Ph.D.) in Mathematics</h3>
+        <p class="meta">Birla Institute of Technology and Science (BITS), Pilani | Jan 2026 – Present</p>
+        <ul style="padding-left: 1.2rem;">
+          <li><strong>Research Focus:</strong> Numerical Solutions of Fractional ODE/PDE.</li>
+          <li><strong>Key Topics:</strong> Integro-Fractional Differential Equations and Modelling in Fractional Differential Equations.</li>
+        </ul>
+      </div>
 
-<footer>
-    &copy; 2026 Priyanshu. Hosted on GitHub Pages.
-</footer>
+      <div class="card">
+        <h3>Master of Science (M.Sc.) in Mathematics</h3>
+        <p class="meta">Netaji Subhas University of Technology (NSUT), Dwarka | Aug 2023 – May 2025</p>
+        <p style="margin-bottom: 0.5rem;"><strong>CGPA:</strong> 6.5 / 10 | Major in Mathematics, Minor in Physics</p>
+        <p><strong>Thesis:</strong> "Lie Symmetry analysis, Exact, Optimal solution of nmCBS equation"</p>
+      </div>
+
+      <div class="card">
+        <h3>Bachelor of Science (B.Sc. Honors) in Mathematics</h3>
+        <p class="meta">Ram Lal Anand College, University of Delhi | Aug 2020 – May 2023</p>
+        <p><strong>CGPA:</strong> 8.5 / 10 | Major in Mathematics, Minor in Computer Science</p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE PAGE -->
+    <section id="experience" class="page-section">
+      <h2 class="section-title">Work & Professional Experience</h2>
+      
+      <div class="card">
+        <h3>PhD Research Scholar & Teaching Assistant</h3>
+        <p class="meta">BITS Pilani | Jan 2026 – Present</p>
+        <ul style="padding-left: 1.2rem;">
+          <li>Serve as a Teaching Assistant at BITS Pilani, leading class discussion sessions for graduate mathematics students.</li>
+          <li>Supervise mathematical laboratory classes, assisting students with computational problem-solving and software tools.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Home Tutor & Account Manager</h3>
+        <p class="meta">Nov 2022 – Mar 2025</p>
+        <ul style="padding-left: 1.2rem;">
+          <li>Delivered personalized in-home and online tutoring to students (Grades VIII–XII) in Mathematics.</li>
+          <li>Managed e-commerce platform seller accounts (3 Leaf Infratech & Amyra traders on Amazon & Flipkart), optimizing listings, pricing, and advertising strategies (Nov 2022 – Jan 2024).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RESEARCH PAGE -->
+    <section id="research" class="page-section">
+      <h2 class="section-title">Research Experience & Academic Workshops</h2>
+      
+      <div class="card">
+        <h3>Research Activity</h3>
+        <p class="meta">Aug 2024 – Jan 2026</p>
+        <ul style="padding-left: 1.2rem;">
+          <li>Worked on a research manuscript regarding Lie symmetries analysis under faculty supervision.</li>
+          <li>Completed and presented Master's Thesis on Lie Symmetries analysis of non-linear PDEs.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Workshops & Specialized Training</h3>
+        <ul style="padding-left: 1.2rem;">
+          <li><strong>3-day Workshop:</strong> "Harmonic Mappings, PDEs, and Applications" at IIT Bhilai.</li>
+          <li><strong>7-day Workshop:</strong> "Partial Differential Equations: Theory and Numerics" at IIIT Delhi.</li>
+          <li><strong>National Workshop:</strong> "CRYPTOGRAPHY - A Recent Trend In Mathematics".</li>
+          <li><strong>Short Courses (40 hours):</strong> LaTeX Typing, Python Programming (Multidisciplinary Approach), Advanced Excel, and Full Stack Web Development & Hosting.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Webinars Attended</h3>
+        <ul style="padding-left: 1.2rem; font-size: 0.95rem;">
+          <li>Webinar on "Mathemagical Symposium with Prof. Brian Winkel"</li>
+          <li>Webinar on "Applications of Number Theory in Real Life"</li>
+          <li>National Level Webinar on "Mathematics Behind Investment Decision Making"</li>
+          <li>Webinar on "Some Concepts From Linear Algebra" by Prof. Aparna Mehra</li>
+          <li>National Webinar on "Introduction to Data Science"</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP PAGE -->
+    <section id="leadership" class="page-section">
+      <h2 class="section-title">Leadership & Extracurricular Activities</h2>
+      <div class="card">
+        <ul style="padding-left: 1.2rem; line-height: 1.8;">
+          <li><strong>President:</strong> Department of Mathematics, Ram Lal Anand College, University of Delhi (2022–2023).</li>
+          <li><strong>Secretary:</strong> Trikon (Mathematics Department Society), Netaji Subhas University of Technology (2023–2024).</li>
+          <li><strong>Class Representative:</strong> M.Sc. Mathematics, NSUT Dwarka (2024–2025).</li>
+          <li><strong>Treasurer:</strong> Equal Opportunities Cell, Ram Lal Anand College, University of Delhi (2021–2022).</li>
+          <li><strong>Event Organizer:</strong> Organized poster presentation competitions, annual mathematical fest IMPLOSION'22, and workshops on Cryptography and Number Theory.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CV PAGE -->
+    <section id="cv" class="page-section">
+      <h2 class="section-title">Curriculum Vitae</h2>
+      <div class="card" style="text-align: center; padding: 3rem;">
+        <i class="fa-solid fa-file-pdf" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+        <h3>Priyanshu Yadav - Curriculum Vitae</h3>
+        <p style="margin-bottom: 1.5rem; color: var(--text-muted);">PhD Research Scholar in Mathematics, BITS Pilani</p>
+        <a href="CV.pdf" class="btn" download><i class="fa-solid fa-download"></i> Download CV (PDF)</a>
+      </div>
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section id="contact" class="page-section">
+      <h2 class="section-title">Contact Information</h2>
+      <div class="card">
+        <ul class="contact-info">
+          <li>
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <strong>Email:</strong><br/>
+              <a href="mailto:pyadavmath@gmail.com" style="color: var(--secondary-color);">pyadavmath@gmail.com</a>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <strong>Phone:</strong><br/>
+              +91 635 0029 208
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <strong>Address:</strong><br/>
+              Chind ka mohalla, Gandala, Alwar, Rajasthan, India (PIN: 301709)
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-building-columns"></i>
+            <div>
+              <strong>Affiliation:</strong><br/>
+              Department of Mathematics, BITS Pilani, Rajasthan, India
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <center><footer>
+    &copy; 2026 Priyanshu Yadav.
+</footer></center>
+
+  </main>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+
+    // Toggle Sidebar on Mobile Hamburger Click
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+
+    // Handle Tab Switching and Auto-Closing Mobile Sidebar
+    function showTab(tabId) {
+      // 1. Hide all section pages
+      const sections = document.querySelectorAll('.page-section');
+      sections.forEach(section => section.classList.remove('active'));
+
+      // 2. Clear active styling from all links
+      const links = document.querySelectorAll('.nav-link');
+      links.forEach(link => link.classList.remove('active'));
+
+      // 3. Show selected section
+      document.getElementById(tabId).classList.add('active');
+
+      // 4. Set active styling on clicked link
+      event.currentTarget.classList.add('active');
+
+      // 5. Close sidebar on mobile after selecting a tab
+      if (window.innerWidth <= 850) {
+        sidebar.classList.remove('open');
+      }
+    }
+  </script>
+
+
+
 
 </body>
 </html>
