@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyanshu - Personal Webpage</title>
+    <style>
+        :root {
+            --primary-color: #0366d6;
+            --text-color: #24292e;
+            --bg-color: #f6f8fa;
+            --card-bg: #ffffff;
+            --border-color: #e1e4e8;
+            --secondary-text: #586069;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+            background-color: #eaecef;
+        }
+
+        .header-info h1 {
+            margin: 0 0 5px 0;
+            font-size: 2.2rem;
+            color: #1b1f23;
+        }
+
+        .header-info p {
+            margin: 4px 0;
+            color: var(--secondary-text);
+            font-size: 1.05rem;
+        }
+
+        .contact-links {
+            margin-top: 12px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-links a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-top: 0;
+            color: #1b1f23;
+            font-size: 1.4rem;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .item-title {
+            font-weight: 600;
+        }
+
+        .item-sub {
+            color: var(--secondary-text);
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            background-color: #f1f8ff;
+            color: var(--primary-color);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid #c8e1ff;
+            display: inline-block;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header Section -->
+    <div class="card header">
+        <!-- Placeholder image: Replace 'profile.jpg' with your photo link -->
+        <img src="https://via.placeholder.com/140" alt="Priyanshu" class="profile-img">
+        <div class="header-info">
+            <h1>Priyanshu</h1>
+            <p>👤 Mathematics Researcher & Educator</p>
+            <p>🏫 M.Sc. in Mathematics</p>
+            <p>📧 email@example.com</p>
+            
+            <div class="contact-links">
+                <a href="https://scholar.google.com" target="_blank">Google Scholar</a> |
+                <a href="https://www.researchgate.net" target="_blank">ResearchGate</a> |
+                <a href="https://github.com/your-username" target="_blank">GitHub</a> |
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Me Section -->
+    <div class="card">
+        <h2>About Me</h2>
+        <p>
+            I am a mathematics researcher and educator with a Master's degree in Mathematics. 
+            My primary research focus lies in Partial Differential Equations (PDEs), specifically nonlinear equations, 
+            Lie symmetry analysis, and numerical schemes for differential equations. 
+            Additionally, I am passionate about mathematics education, specializing in tutoring Grade 11/12, IB Mathematics, and Digital SAT curricula.
+        </p>
+    </div>
+
+    <!-- Research Interests Section -->
+    <div class="card">
+        <h2>Research Interests</h2>
+        <ul>
+            <li><strong>Partial Differential Equations:</strong> Nonlinear PDEs, Exact and Analytical Solutions.</li>
+            <li><strong>Symmetry Methods:</strong> Lie Symmetry Analysis and Group Theoretical Methods.</li>
+            <li><strong>Numerical Analysis:</strong> Fractional Calculus Schemes (L1 Scheme, Generalized Fractional Schemes, Trapezoidal Approximations).</li>
+            <li><strong>Computational Mathematics:</strong> Numerical Simulations and Algorithm Implementation.</li>
+        </ul>
+    </div>
+
+    <!-- Education Section -->
+    <div class="card">
+        <h2>Education</h2>
+        <ul>
+            <li>
+                <div class="item-title">Master of Science (M.Sc.) in Mathematics</div>
+            </li>
+            <li>
+                <div class="item-title">Bachelor of Science (B.Sc.) in Mathematics</div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Publications Section -->
+    <div class="card">
+        <h2>Publications & Preprints</h2>
+        <ul>
+            <li>
+                <div class="item-title">Symmetry Analysis and Exact Solutions for Nonlinear Partial Differential Equations</div>
+                <div class="item-sub"><em>Submitted / Under Review (Journal of Applied Mathematics and Computing)</em></div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Teaching Experience Section -->
+    <div class="card">
+        <h2>Teaching & Educational Services</h2>
+        <ul>
+            <li><strong>Digital SAT Mathematics:</strong> Comprehensive prep, strategies, and problem-solving modules.</li>
+            <li><strong>IB Mathematics:</strong> Higher Level (HL) and Standard Level (SL) coursework guidance.</li>
+            <li><strong>Grade 11 & 12 Curriculum:</strong> Advanced Algebra, Calculus, and Applied Mathematics.</li>
+        </ul>
+    </div>
+
+    <!-- Technical Skills Section -->
+    <div class="card">
+        <h2>Technical & Computational Skills</h2>
+        <div class="skills-grid">
+            <div>
+                <strong>Programming & Numerical Tools:</strong><br>
+                <span class="badge">MATLAB</span>
+                <span class="badge">Python</span>
+                <span class="badge">R</span>
+            </div>
+            <div>
+                <strong>Computer Algebra Systems (CAS):</strong><br>
+                <span class="badge">Mathematica</span>
+                <span class="badge">Maple</span>
+            </div>
+            <div>
+                <strong>Tools & Document Preparation:</strong><br>
+                <span class="badge">LaTeX</span>
+                <span class="badge">Git & GitHub</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    &copy; 2026 Priyanshu. Hosted on GitHub Pages.
+</footer>
+
+</body>
+</html>
