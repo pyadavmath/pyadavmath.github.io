@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Priyanshu | Academic & Research Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #1a365d;
+      --secondary-color: #2b6cb0;
+      --accent-color: #3182ce;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --text-color: #2d3748;
+      --text-muted: #718096;
+      --border-color: #e2e8f0;
+      --sidebar-width: 300px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      width: var(--sidebar-width);
+      background-color: var(--primary-color);
+      color: #ffffff;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .profile-card {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .profile-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 3px solid var(--accent-color);
+      object-fit: cover;
+      margin-bottom: 1rem;
+      background-color: #cbd5e0;
+    }
+
+    .profile-card h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .profile-card p {
+      font-size: 0.9rem;
+      color: #cbd5e0;
+    }
+
+    .nav-menu {
+      list-style: none;
+      width: 100%;
+    }
+
+    .nav-item {
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      color: #e2e8f0;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-link i {
+      width: 24px;
+      margin-right: 0.75rem;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      background-color: var(--secondary-color);
+      color: #ffffff;
+    }
+
+    /* Main Content Area */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      flex: 1;
+      padding: 3rem;
+      max-width: 1100px;
+    }
+
+    .page-section {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    /* Cards & Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .card h3 {
+      color: var(--primary-color);
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Badges */
+    .badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .badge {
+      background-color: #ebf8ff;
+      color: var(--secondary-color);
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.825rem;
+      font-weight: 500;
+    }
+
+    /* Contact Links */
+    .contact-info {
+      list-style: none;
+    }
+
+    .contact-info li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-info i {
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+      margin-right: 1rem;
+      width: 20px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-color);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        position: relative;
+        padding: 1.5rem 1rem;
+      }
+      .main-content {
+        margin-left: 0;
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="profile-card">
+      <img src="https://via.placeholder.com/130" alt="Priyanshu" class="profile-img"/>
+      <h1>Priyanshu</h1>
+      <p>Mathematics Researcher & Educator</p>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item"><a class="nav-link active" onclick="showTab('home')"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li class="nav-item"><a class="nav-link" onclick="showTab('education')"><i class="fa-solid fa-graduation-cap"></i> Education</a></li>
+      <li class="nav-item"><a class="nav-link" onclick="showTab('experience')"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
+      <li class="nav-item"><a class="nav-link" onclick="showTab('research')"><i class="fa-solid fa-square-root-variable"></i> Research</a></li>
+      <li class="nav-item"><a class="nav-link" onclick="showTab('publications')"><i class="fa-solid fa-book-open"></i> Publications</a></li>
+      <li class="nav-item"><a class="nav-link" onclick="showTab('cv')"><i class="fa-solid fa-file-pdf"></i> Curriculum Vitae</a></li>
+      <li class="nav-item"><a class="nav-link" onclick="showTab('contact')"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page-section active">
+      <h2 class="section-title">Biography & Overview</h2>
+      <div class="card" style="margin-bottom: 2rem;">
+        <p>I am a dedicated mathematics researcher and educator specializing in <strong>Nonlinear Partial Differential Equations (PDEs)</strong>, <strong>Lie Symmetry Analysis</strong>, and <strong>Numerical Methods</strong> for fractional-order differential equations.</p>
+        <br/>
+        <p>My research focuses on formulating exact analytical solutions and high-order numerical discretization schemes (including L1, Grünwald-Letnikov, and trapezoidal approximations). Alongside research, I actively mentor students in advanced mathematics, preparing them for competitive curricula such as Digital SAT, IB Mathematics, and Grade 11/12 advanced algebra and calculus.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Research Interests</h3>
+          <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+            <li>Nonlinear Partial Differential Equations (PDEs)</li>
+            <li>Lie Symmetry Methods & Invariant Solutions</li>
+            <li>Numerical Analysis & Fractional Calculus</li>
+            <li>Computational Implementations (MATLAB, Maple, Mathematica, Python)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Computational Expertise</h3>
+          <div class="badge-container">
+            <span class="badge">MATLAB</span>
+            <span class="badge">Maple</span>
+            <span class="badge">Mathematica</span>
+            <span class="badge">Python</span>
+            <span class="badge">R</span>
+            <span class="badge">LaTeX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION PAGE -->
+    <section id="education" class="page-section">
+      <h2 class="section-title">Education</h2>
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <h3>Master of Science (M.Sc.) in Mathematics</h3>
+        <p class="meta">Completed</p>
+        <p>Specialization in Advanced Differential Equations, Numerical Analysis, and Lie Group Analysis.</p>
+      </div>
+      <div class="card">
+        <h3>Bachelor of Science (B.Sc.) in Mathematics</h3>
+        <p class="meta">Completed</p>
+        <p>Comprehensive coursework in Real Analysis, Abstract Algebra, Linear Algebra, and Differential Equations.</p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE PAGE -->
+    <section id="experience" class="page-section">
+      <h2 class="section-title">Academic & Teaching Experience</h2>
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <h3>Mathematics Educator & Tutor</h3>
+        <p class="meta">Private & Online Tutoring</p>
+        <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+          <li>Designed specialized curricula and lesson plans for Digital SAT Math and IB Mathematics (AA/AI).</li>
+          <li>Guided Grade 11 & 12 students in mastering calculus, trigonometry, and complex algebraic problem-solving.</li>
+          <li>Developed customized computational workflows in MATLAB to assist students with numerical visualisations.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RESEARCH PAGE -->
+    <section id="research" class="page-section">
+      <h2 class="section-title">Research Overview</h2>
+      <div class="card">
+        <h3>Nonlinear PDEs & Numerical Schemes</h3>
+        <p>My work centers on developing unified analytical and computational frameworks for solving challenging nonlinear differential equations. Key focal areas include:</p>
+        <br/>
+        <ul style="padding-left: 1.2rem;">
+          <li><strong>Lie Symmetry Analysis:</strong> Reducing multi-dimensional nonlinear PDEs into ordinary differential equations to extract exact invariant solutions.</li>
+          <li><strong>Fractional Discretization Schemes:</strong> Designing and implementing high-order L1 and Grünwald-Letnikov schemes for time-fractional differential systems.</li>
+          <li><strong>Error & Convergence Analysis:</strong> Rigorously proving stability and error bounds for numerical approximations.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS PAGE -->
+    <section id="publications" class="page-section">
+      <h2 class="section-title">Publications & Manuscripts</h2>
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <h3>Analytical and Numerical Studies on Nonlinear PDEs via Lie Symmetry Analysis</h3>
+        <p class="meta">Submitted for Review | Paper ID: JAMC-D-26-00547</p>
+        <p><em>Journal of Applied Mathematics and Computing (JAMC)</em></p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">Focuses on explicit exact solutions and stable discretization schemes for nonlinear PDE models.</p>
+      </div>
+    </section>
+
+    <!-- CV PAGE -->
+    <section id="cv" class="page-section">
+      <h2 class="section-title">Curriculum Vitae</h2>
+      <div class="card" style="text-align: center; padding: 3rem;">
+        <i class="fa-solid fa-file-pdf" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+        <h3>Download Full Curriculum Vitae</h3>
+        <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Updated academic CV with complete details on research, coursework, and teaching activities.</p>
+        <a href="CV.pdf" class="btn" download><i class="fa-solid fa-download"></i> Download CV (PDF)</a>
+      </div>
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section id="contact" class="page-section">
+      <h2 class="section-title">Contact</h2>
+      <div class="card">
+        <ul class="contact-info">
+          <li>
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <strong>Email:</strong><br/>
+              <a href="mailto:your.email@example.com" style="color: var(--secondary-color);">your.email@example.com</a>
+            </div>
+          </li>
+          <li>
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <strong>Location:</strong><br/>
+              India
+            </div>
+          </li>
+          <li>
+            <i class="fa-brands fa-github"></i>
+            <div>
+              <strong>GitHub:</strong><br/>
+              <a href="https://github.com/yourusername" target="_blank" style="color: var(--secondary-color);">github.com/yourusername</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function showTab(tabId) {
+      // Hide all sections
+      const sections = document.querySelectorAll('.page-section');
+      sections.forEach(section => section.classList.remove('active'));
+
+      // Remove active class from nav links
+      const links = document.querySelectorAll('.nav-link');
+      links.forEach(link => link.classList.remove('active'));
+
+      // Show selected section
+      document.getElementById(tabId).classList.add('active');
+
+      // Highlight active link
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+</body>
+</html>
